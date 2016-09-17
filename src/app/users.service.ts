@@ -7,7 +7,7 @@ type Todo = {fullName:string};
 
 @Injectable()
 export class UsersService {
-  private _baseUrl = 'http://test-api.javascript.ru/v1/alla3/users/';
+  private _baseUrl = 'https://test-api.javascript.ru/v1/alla3/users/';
   public email: string;
 
 

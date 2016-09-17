@@ -1,0 +1,40 @@
+
+
+<div class="table">
+  <h2>The list of Users</h2>
+  <h4>Enter the full name and e-mail</h4>
+  <div class="data-input">
+    <input type = 'text' [(ngModel)]="user.fullName" placeholder="name">
+    <input type = 'text' [(ngModel)]="user.email" placeholder="email">
+    <button class="add" (click)="add(user)">add user</button>
+</div>
+    <section class="main">
+    <div class = "block__sidebar__header">
+      <span class = "block__sidebar__item__list">Name</span>&nbsp;
+      <span class = "block__sidebar__item__name">E-Mail</span>
+    </div>
+
+     <div class = "block__sidebar__item" *ngFor="let todo of todos">
+       <span class = "block__sidebar__item__list">{{todo.fullName}}</span>
+        <span class = "block__sidebar__item__name">{{todo.email}}</span>
+       <button class="destroy del" (click)="destroy(todo)"></button>
+     </div>
+
+
+
+
+
+
+    <!--<ul class="todo-list">
+    <li class="todo" *ngFor="let todo of todos">
+      <div class="view">
+        <label>{{todo.fullName}}</label>
+        <label>{{todo.email}}</label>
+        <button class="destroy" (click)="destroy(todo)"></button>
+      </div>
+    </li>
+  </ul>-->
+
+</section>
+  </div>
+

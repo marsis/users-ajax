@@ -12,24 +12,33 @@ import {Response} from '@angular/http';
 export class AppComponent {
   public todos: any = [];
 
-  user = {
-    email: '',
-    fullName: ''
-  };
-
+  user = {email: '', fullName: '' };
+  public errors: any = [];
   constructor(private _usersService: UsersService){
-       this._usersService.getUsers().subscribe((response: Response) => {
-       return this.todos = response.json();
-     });
+
+    this._usersService.getUsers().subscribe(
+        (response: Response) => {
+          return this.todos = response.json();
+        },
+        (error: Response) => {
+          //debugger;
+          console.log('here is an error!!!')
+        }
+    );
+
   }
 
-  add(user){
-    this.user={email: '',
-      fullName: ''}
-   this._usersService.add(user).subscribe((todo) => {
-     this.todos.push(user);
-   });
-  }
+    add(user, data){
+      this.user={email: '', fullName: ''}
+     this._usersService.add(user).subscribe((todo) => {
+       this.todos.push(user);
+     },
+         (error: Response) => {
+
+           alert("incorrect email  " + user.email +  "   try again");
+
+         });
+    }
 
   destroy(user){
     this._usersService.destroy(user).subscribe((todo) => {

@@ -4,10 +4,12 @@
   <h2>The list of Users</h2>
   <h4>Enter the full name and e-mail</h4>
   <div class="data-input">
-    <input type = 'text' [(ngModel)]="user.fullName" placeholder="name">
-    <input type = 'text' [(ngModel)]="user.email" placeholder="email">
-    <button class="add" (click)="add(user)">add user</button>
-</div>
+
+    <input type = 'text' [(ngModel)]="user.fullName" value = {{errFullName}} placeholder="name">
+    <input type = 'text' [(ngModel)]="user.email" value = {{errEmail}} placeholder="email">
+    <button class="add" (click)="add(user)">add user</button><br>
+
+  </div>
     <section class="main">
     <div class = "block__sidebar__header">
       <span class = "block__sidebar__item__list">Name</span>&nbsp;

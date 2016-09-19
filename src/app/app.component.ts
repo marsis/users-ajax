@@ -11,9 +11,11 @@ import {Response} from '@angular/http';
 })
 export class AppComponent {
   public todos: any = [];
+  public error: any = {};
 
   user = {email: '', fullName: '' };
-  public errors: any = [];
+  public errEmail: string;
+  public errFullName: string;
   constructor(private _usersService: UsersService){
 
     this._usersService.getUsers().subscribe(
@@ -28,15 +30,21 @@ export class AppComponent {
 
   }
 
-    add(user, data){
+    add(user){
       this.user={email: '', fullName: ''}
      this._usersService.add(user).subscribe((todo) => {
        this.todos.push(user);
      },
          (error: Response) => {
-
-           alert("incorrect email  " + user.email +  "   try again");
-
+            this.error = error.json();
+             if (!this.user.fullName) {
+                 this.errFullName = this.error.errors.fullName;
+                // alert(this.error.errors.fullName);
+             }
+             if (!this.user.email){
+                // alert(this.error.errors.email);
+                 this.errEmail = this.error.errors.email;
+             }
          });
     }
 

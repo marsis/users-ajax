@@ -182,4 +182,20 @@ input{
 
 }
 
+.error{
+    margin: 0 auto;
+    width: 500px;
+    color: red;
+    font-size: 10px;
+    margin-left: 500px;
+
+}
+.emailerr{
+    float: right;
+    margin-left:70px;
+}
+.nameerr{
+
+    margin: 0 20px;
+}
 

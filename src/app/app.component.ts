@@ -31,21 +31,26 @@ export class AppComponent {
   }
 
     add(user){
-      this.user={email: '', fullName: ''}
-     this._usersService.add(user).subscribe((todo) => {
-       this.todos.push(user);
-     },
+
+     this._usersService.add(user).subscribe(
+         (todo) => {
+             this.user={email: '', fullName: ''}
+             this.todos.push(user);
+         },
          (error: Response) => {
             this.error = error.json();
-             if (!this.user.fullName) {
+             if (this.error.errors.fullName) {
                  this.errFullName = this.error.errors.fullName;
                 // alert(this.error.errors.fullName);
              }
-             if (!this.user.email){
+             if (this.error.errors.email){
                 // alert(this.error.errors.email);
                  this.errEmail = this.error.errors.email;
              }
+
          });
+        this.errEmail = '';
+        this.errFullName = '';
     }
 
   destroy(user){

@@ -5,8 +5,12 @@
   <h4>Enter the full name and e-mail</h4>
   <div class="data-input">
 
-    <input type = 'text' [(ngModel)]="user.fullName" value = {{errFullName}} placeholder="name">
-    <input type = 'text' [(ngModel)]="user.email" value = {{errEmail}} placeholder="email">
+    <div class = 'error'>
+    <span class ='nameerr'>{{errFullName}}</span>
+    <span class = 'emailerr' >{{errEmail}}</span><br>
+    </div>
+    <input type = 'text' [(ngModel)]="user.fullName" placeholder="name">
+    <input type = 'text' [(ngModel)]="user.email" placeholder="email">
     <button class="add" (click)="add(user)">add user</button><br>
 
   </div>
